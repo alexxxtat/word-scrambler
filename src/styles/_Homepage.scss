@@ -1,0 +1,77 @@
+.homepage {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 5rem 10rem;
+  background-color: gray;
+  justify-content: center;
+  .container {
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    border: 1px solid gray;
+    border-radius: 1rem;
+    background-color: white;
+    height: 100vh;
+    text-align: center;
+    .scrambleWord {
+      color: dodgerblue;
+      padding: 3rem;
+      font-size: 3rem;
+    }
+    .instruction {
+      padding: 0.75rem;
+      font-size: 1.5rem;
+    }
+    .typing {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-wrap: nowrap;
+      padding: 1rem;
+
+      .rowForEachWord {
+        display: flex;
+        flex-wrap: nowrap;
+        width: 100%;
+      }
+      .alphaLetter {
+        padding: 0.25rem;
+        background-color: #e1e1e1;
+        margin: 0.25rem;
+        width: 5%; //at most 15 elements ~6%
+        flex: 1;
+      }
+      .space {
+        padding: 0.25rem;
+        margin: 0.25rem;
+        width: 5%; //at most 15 elements ~6%
+        flex: 1;
+      }
+    }
+    .button {
+      background-color: #399e3c;
+    }
+    // .hidden {
+    //   visibility: hidden;
+    // }
+    // .active {
+    //   visibility: visible;
+    // }
+  }
+  .win {
+    border-radius: 1rem;
+
+    display: flex;
+    background-color: white;
+
+    align-items: center;
+    justify-content: center;
+    p {
+      text-align: center;
+
+      padding: 1rem 3rem;
+    }
+  }
+}

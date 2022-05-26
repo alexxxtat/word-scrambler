@@ -1,0 +1,118 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.homepage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100vh;
+  padding: 5rem 10rem;
+  background-color: gray;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.homepage .container {
+  border-radius: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow: auto;
+  border: 1px solid gray;
+  border-radius: 1rem;
+  background-color: white;
+  height: 100vh;
+  text-align: center;
+}
+
+.homepage .container .scrambleWord {
+  color: dodgerblue;
+  padding: 3rem;
+  font-size: 3rem;
+}
+
+.homepage .container .instruction {
+  padding: 0.75rem;
+  font-size: 1.5rem;
+}
+
+.homepage .container .typing {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  padding: 1rem;
+}
+
+.homepage .container .typing .rowForEachWord {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  width: 100%;
+}
+
+.homepage .container .typing .alphaLetter {
+  padding: 0.25rem;
+  background-color: #e1e1e1;
+  margin: 0.25rem;
+  width: 5%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.homepage .container .typing .space {
+  padding: 0.25rem;
+  margin: 0.25rem;
+  width: 5%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.homepage .container .button {
+  background-color: #399e3c;
+}
+
+.homepage .win {
+  border-radius: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: white;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.homepage .win p {
+  text-align: center;
+  padding: 1rem 3rem;
+}
+/*# sourceMappingURL=style.css.map */
