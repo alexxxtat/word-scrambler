@@ -3,6 +3,7 @@
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  font-family: "League Gothic", sans-serif;
 }
 
 .homepage {
@@ -13,12 +14,12 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 100vh;
-  padding: 5rem 10rem;
+  padding: 2.5rem 10rem;
   background-color: gray;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  height: 100vh;
 }
 
 .homepage .container {
@@ -34,19 +35,19 @@
   border: 1px solid gray;
   border-radius: 1rem;
   background-color: white;
-  height: 100vh;
   text-align: center;
 }
 
 .homepage .container .scrambleWord {
   color: dodgerblue;
-  padding: 3rem;
+  padding: 2.25rem;
   font-size: 3rem;
 }
 
 .homepage .container .instruction {
-  padding: 0.75rem;
+  padding: 0.6rem;
   font-size: 1.5rem;
+  font-family: Helvetica Neue;
 }
 
 .homepage .container .typing {
@@ -82,6 +83,15 @@
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  color: white;
+  border: 0px;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.homepage .container .typing .alphaLetter:focus {
+  outline: none;
+  caret-color: black;
 }
 
 .homepage .container .typing .space {
@@ -94,7 +104,23 @@
 }
 
 .homepage .container .button {
-  background-color: #399e3c;
+  background-color: #388e3c;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0.5rem 1rem;
+  color: white;
+  outline: none;
+  border: 0px white solid;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin-bottom: 0.5rem;
+}
+
+.homepage .score {
+  font-size: 2.5rem;
+  margin: 1rem;
 }
 
 .homepage .win {
@@ -114,5 +140,17 @@
 .homepage .win p {
   text-align: center;
   padding: 1rem 3rem;
+}
+
+@media screen and (max-width: 1000px) {
+  .homepage {
+    padding: 2.5rem 5rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .homepage {
+    padding: 2.5rem 2rem;
+  }
 }
 /*# sourceMappingURL=style.css.map */

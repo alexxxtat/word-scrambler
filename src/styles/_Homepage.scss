@@ -1,10 +1,11 @@
 .homepage {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  padding: 5rem 10rem;
+  padding: 2.5rem 10rem;
   background-color: gray;
   justify-content: center;
+  height: 100vh;
+
   .container {
     border-radius: 1rem;
     display: flex;
@@ -13,16 +14,16 @@
     border: 1px solid gray;
     border-radius: 1rem;
     background-color: white;
-    height: 100vh;
     text-align: center;
     .scrambleWord {
       color: dodgerblue;
-      padding: 3rem;
+      padding: 2.25rem;
       font-size: 3rem;
     }
     .instruction {
-      padding: 0.75rem;
+      padding: 0.6rem;
       font-size: 1.5rem;
+      font-family: Helvetica Neue;
     }
     .typing {
       display: flex;
@@ -42,6 +43,14 @@
         margin: 0.25rem;
         width: 5%; //at most 15 elements ~6%
         flex: 1;
+        color: white;
+        border: 0px;
+        text-align: center;
+        font-size: 1.5rem;
+      }
+      .alphaLetter:focus {
+        outline: none;
+        caret-color: black;
       }
       .space {
         padding: 0.25rem;
@@ -51,27 +60,40 @@
       }
     }
     .button {
-      background-color: #399e3c;
+      background-color: #388e3c;
+      width: fit-content;
+      padding: 0.5rem 1rem;
+      color: white;
+      outline: none;
+      border: 0px white solid;
+      align-self: center;
+      margin-bottom: 0.5rem;
     }
-    // .hidden {
-    //   visibility: hidden;
-    // }
-    // .active {
-    //   visibility: visible;
-    // }
+  }
+  .score {
+    font-size: 2.5rem;
+    margin: 1rem;
   }
   .win {
     border-radius: 1rem;
-
     display: flex;
     background-color: white;
-
     align-items: center;
     justify-content: center;
     p {
       text-align: center;
-
       padding: 1rem 3rem;
     }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .homepage {
+    padding: 2.5rem 5rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  .homepage {
+    padding: 2.5rem 2rem;
   }
 }

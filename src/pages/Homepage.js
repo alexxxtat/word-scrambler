@@ -1,45 +1,43 @@
 import React, { useState, useEffect } from "react";
 import Typing from "../components/Typing";
 import Score from "../components/Score";
-//import Win from "../components/Win";
+
 const Homepage = () => {
-  let [question, setQuestion] = useState(1);
-  let [oriWords, setOriWords] = useState("");
-  let [scrambleWord, setScrambleWord] = useState("");
-  let [score, setScore] = useState(0);
+  const [question, setQuestion] = useState(1);
+  const [oriWords, setOriWords] = useState("");
+  const [scrambleWord, setScrambleWord] = useState("");
+  const [score, setScore] = useState(0);
 
   const search = async () => {
-    let URL = "https://api.hatchways.io/assessment/sentences/" + question;
-    let unparsedData = await fetch(URL, { method: "GET" });
-    let parsedData = await unparsedData.json();
+    const URL = "https://api.hatchways.io/assessment/sentences/" + question;
+    const unparsedData = await fetch(URL, { method: "GET" });
+    const parsedData = await unparsedData.json();
     setOriWords(parsedData.data.sentence);
   };
-
   const getRandomInt = (n) => {
     return Math.floor(Math.random() * n);
   };
   const shuffle = (s) => {
-    let arr = s.split("");
-    let n = arr.length;
+    //only shuffle string index from 1 to n-1, not for the first and last idx;
+    const arr = s.split("");
+    const n = arr.length;
     for (let i = 1; i < n - 1; i++) {
-      let j = getRandomInt(n - 2) + 1;
-      let temp = arr[i];
+      const j = getRandomInt(n - 2) + 1;
+      const temp = arr[i];
       arr[i] = arr[j];
       arr[j] = temp;
     }
     s = arr.join("");
     return s;
   };
-
   const scramble = () => {
-    let text = oriWords;
-    console.log(text);
+    const text = oriWords;
     if (typeof text === "string") {
       const myArray = text.split(" ");
-      //console.log(myArray);
       for (let i = 0; i < myArray.length; i++) {
-        if (myArray[i].length > 2) {
-          let randomWord = shuffle(myArray[i]);
+        if (myArray[i].length > 3) {
+          //only shuffle when the length = 3 ( because the middle will be remain the same)
+          const randomWord = shuffle(myArray[i]);
           myArray[i] = randomWord;
         }
       }
@@ -47,24 +45,20 @@ const Homepage = () => {
       setScrambleWord(wordWithSpaces);
     }
   };
-  const updateQuestion = async () => {
+  const handleButtonClick = () => {
     setQuestion(question + 1);
     setScore(score + 1);
   };
+
   useEffect(() => {
     search();
-    $(".button").hide();
   }, []);
-
   useEffect(() => {
     scramble();
-    console.log(oriWords);
   }, [oriWords]);
-
   useEffect(() => {
     search();
   }, [question]);
-
   useEffect(() => {
     $(".alphaLetter").first().focus();
     $(".alphaLetter").val("");
@@ -84,16 +78,15 @@ const Homepage = () => {
           <p className="scrambleWord">{scrambleWord}</p>
           <p className="instruction">Guess the sentencel Starting typing </p>
           <p className="instruction">The yellow blocks are meant for spaces </p>
-          <Score score={score} setScore={setScore} />
+          <Score score={score} />
           <Typing scrambleWord={scrambleWord} oriWords={oriWords} />
           <button
             onClick={(e) => {
-              console.log("dllm");
-              updateQuestion();
+              handleButtonClick();
             }}
             onInput={(e) => {
               if (e.keyCode === 13) {
-                updateQuestion();
+                handleButtonClick();
               }
             }}
             className="button"
