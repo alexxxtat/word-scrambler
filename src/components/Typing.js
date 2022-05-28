@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 const Typing = ({ scrambleWord, oriWords }) => {
-  const myArray = scrambleWord.split(" ");
+  const scrambleWordArray = scrambleWord.split(" ");
   const checkAns = (e) => {
-    let test = document.getElementsByClassName("alphaLetter");
+    let alphaLetter = document.getElementsByClassName("alphaLetter");
     let count = 0;
     for (let i = 0; i < oriWords.length; i++) {
-      if (test[i].value !== oriWords[i]) {
+      if (alphaLetter[i].value !== oriWords[i]) {
         //alpha letter not correctly match
         if (oriWords[i] === " ") {
-          test[i].style.color = "black";
-          test[i].style.background = " #ffb74d";
+          alphaLetter[i].style.color = "black";
+          alphaLetter[i].style.background = " #ffb74d";
         } else {
-          test[i].style.color = "black";
-          test[i].style.background = "#e1e1e1";
+          alphaLetter[i].style.color = "black";
+          alphaLetter[i].style.background = "#e1e1e1";
         }
       } else {
         //match correclty
-        test[i].style.color = "white";
-        test[i].style.background = "#4caf50";
+        alphaLetter[i].style.color = "white";
+        alphaLetter[i].style.background = "#4caf50";
         count = count + 1;
       }
     }
@@ -33,7 +33,6 @@ const Typing = ({ scrambleWord, oriWords }) => {
       if (e.target.classList.contains("space")) {
         //jumped to the next row
         $(e.target).parent().next().children().first().focus();
-        //.css({ backgroundColor: "red", border: "2px solid red" });
       } else {
         $(e.target).next().focus();
       }
@@ -56,7 +55,6 @@ const Typing = ({ scrambleWord, oriWords }) => {
             .focus()
             .val("")
             .css({ backgroundColor: "#ffb74d" });
-          //.css({ backgroundColor: "red", border: "2px solid red" });
         } else {
           //move to the prev box in same row
           $(e.target)
@@ -76,7 +74,6 @@ const Typing = ({ scrambleWord, oriWords }) => {
             .focus()
             .val("")
             .css({ backgroundColor: "#ffb74d" });
-          //.css({ backgroundColor: "red", border: "2px solid red" });
         } else {
           //move to prev typing box
           $(e.target).focus().val("").css({ backgroundColor: "#e1e1e1" });
@@ -97,7 +94,7 @@ const Typing = ({ scrambleWord, oriWords }) => {
             type="text"
             className="alphaLetter"
             maxLength="1"
-            key={i}
+            key={i} //updating using index will not rerendering all the other elements
             onInput={() => {
               checkAns();
             }}
@@ -111,13 +108,13 @@ const Typing = ({ scrambleWord, oriWords }) => {
         );
       } else {
         // for space, last row dont need to add a space
-        if (idx !== myArray.length - 1) {
+        if (idx !== scrambleWordArray.length - 1) {
           rows.push(
             <input
               type="text"
               className="alphaLetter space"
               maxLength="1"
-              key={i}
+              key={i} //updating using index will not rerendering all the other elements
               onInput={() => {
                 checkAns();
               }}
@@ -137,8 +134,9 @@ const Typing = ({ scrambleWord, oriWords }) => {
 
   return (
     <div className="typing">
-      {myArray.map((d, idx) => {
+      {scrambleWordArray.map((d, idx) => {
         return (
+          //no additions/re-ordering/removal to the list) => using idx as key
           <div className="rowForEachWord " key={idx}>
             {generateBox(d, idx)}
           </div>
